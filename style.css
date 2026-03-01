@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Reggae+One&display=swap');
+
+:root {
+    --accent: #38bdf8;
+    --bg: #020617;
+    --panel: rgba(15, 23, 42, 0.95);
+    --border: #1e293b;
+    --text: #f8fafc;
+}
+
+body.light-mode {
+    --bg: #f8fafc; --panel: rgba(255, 255, 255, 0.9); --border: #cbd5e1; --text: #0f172a;
+}
+
+body {
+    background: var(--bg); color: var(--text); font-family: 'Reggae One', cursive;
+    margin: 0; padding-bottom: 100px; min-height: 100vh;
+    background-size: cover; background-position: center; background-attachment: fixed;
+    transition: background 0.5s ease;
+}
+
+/* LOADER */
+#loader { position: fixed; inset: 0; background: #020617; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: 0.8s; }
+#loader.loaded { opacity: 0; visibility: hidden; }
+.loader-circle { width: 40px; height: 40px; border: 3px solid rgba(56,189,248,0.1); border-left-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* HEADER & NAV */
+.main-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; background: var(--panel); border-bottom: 1px solid var(--border); }
+.main-header h1 { font-family: 'Dela Gothic One'; color: var(--accent); margin: 0; font-size: 1.2rem; text-shadow: 0 0 10px rgba(56,189,248,0.3); }
+
+nav { background: var(--panel); position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid var(--border); z-index: 1000; backdrop-filter: blur(10px); }
+.nav-btn { background: none; border: none; color: #64748b; font-family: 'Dela Gothic One'; font-size: 0.6rem; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+.nav-btn.active { color: var(--accent); }
+
+/* GRID SYSTEM */
+.container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-top: 20px; }
+.proj-item { aspect-ratio: 16/9; background-size: cover; background-position: center; border-radius: 12px; border: 2px solid var(--border); cursor: pointer; transition: 0.3s; background-color: #1e293b; }
+.proj-item:hover { border-color: var(--accent); transform: scale(1.05); }
+
+/* EDITOR */
+textarea { width: 100%; height: 180px; background: rgba(0,0,0,0.4); color: #10b981; border: 1px solid var(--border); border-radius: 12px; padding: 15px; font-family: monospace; outline: none; box-sizing: border-box; }
+.editor-wrapper { position: relative; margin-bottom: 15px; }
+.editor-tools { position: absolute; bottom: 15px; right: 15px; }
+
+/* MONITORING CARDS */
+.sys-monitor { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 25px; }
+.stat-card { background: var(--panel); border: 1px solid var(--border); padding: 12px; border-radius: 12px; display: flex; align-items: center; gap: 10px; }
+.stat-info span { font-family: 'Dela Gothic One'; color: var(--accent); font-size: 0.9rem; }
+.stat-info small { display: block; font-size: 0.5rem; opacity: 0.6; }
+
+.btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 10px 15px; border-radius: 8px; cursor: pointer; font-family: 'Reggae One'; font-size: 0.8rem; }
+.btn-float { position: fixed; top: 20px; right: 20px; z-index: 2000; background: var(--panel); border: 1px solid var(--accent); color: var(--accent); border-radius: 50%; width: 45px; height: 45px; cursor: pointer; }
