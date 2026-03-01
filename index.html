@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHER HUB | OS</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loader">
+    <div class="loader-content">
+        <div class="loader-circle"></div>
+        <h1 class="loader-text">AETHER HUB</h1>
+        <p>СИСТЕМА ЗАГРУЖЕНА</p>
+    </div>
+</div>
+
+<header class="main-header">
+    <h1>AETHER HUB</h1>
+    <div class="user-profile" onclick="editProfile()">
+        <span class="material-symbols-outlined">account_circle</span>
+        <span id="userNameDisplay">Пользователь</span>
+    </div>
+</header>
+
+<button id="showUIBtn" onclick="toggleUI()" class="btn-float" style="display:none;">
+    <span class="material-symbols-outlined">visibility</span>
+</button>
+
+<div class="container" id="mainContainer">
+    
+    <div id="code" class="tab-content active">
+        <div class="header-ui">
+            <h2>ХРАНИЛИЩЕ КОДА</h2>
+            <div class="counter" id="limit">0 / 100</div>
+        </div>
+        
+        <div class="editor-wrapper">
+            <textarea id="codeInput" placeholder="Вставьте ваш скрипт..."></textarea>
+            <div class="editor-tools">
+                <button class="icon-btn" onclick="copyCode()" title="Копировать">
+                    <span class="material-symbols-outlined">content_copy</span>
+                </button>
+            </div>
+        </div>
+
+        <button class="btn save-btn" onclick="saveScript()">
+            <span class="material-symbols-outlined">save</span> <span>СОХРАНИТЬ КАРТОЧКУ</span>
+        </button>
+
+        <div class="code-grid" id="codeVault"></div>
+    </div>
+
+    <div id="backgrounds" class="tab-content">
+        <h2>БИБЛИОТЕКА ФОНОВ</h2>
+        <div class="proj-grid" id="bgLibrary"></div>
+        
+        <h3 style="margin-top:40px;">ХРОМАКЕИ</h3>
+        <div class="proj-grid">
+            <div class="proj-item" style="background: #00ff00;" onclick="setBg('#00ff00', false, true)"></div>
+            <div class="proj-item" style="background: #0000ff;" onclick="setBg('#0000ff', false, true)"></div>
+            <div class="proj-item" style="background: #ff00ff;" onclick="setBg('#ff00ff', false, true)"></div>
+        </div>
+    </div>
+
+    <div id="broadcast" class="tab-content">
+        <h2>МОНИТОРИНГ СИСТЕМЫ</h2>
+        
+        <div class="sys-monitor">
+            <div class="stat-card">
+                <span class="material-symbols-outlined">analytics</span>
+                <div class="stat-info"><small>ПРОИЗВ.</small><span id="stat-fps">0 FPS</span></div>
+            </div>
+            <div class="stat-card">
+                <span class="material-symbols-outlined">speed</span>
+                <div class="stat-info"><small>ПИНГ</small><span id="stat-ping">-- ms</span></div>
+            </div>
+            <div class="stat-card">
+                <span class="material-symbols-outlined">vpn_lock</span>
+                <div class="stat-info"><small>VPN / СЕТЬ</small><span id="stat-vpn">ONLINE</span></div>
+            </div>
+            <div class="stat-card">
+                <span id="batt-icon" class="material-symbols-outlined">battery_full</span>
+                <div class="stat-info"><small>ЗАРЯД</small><span id="stat-batt">100%</span></div>
+            </div>
+        </div>
+
+        <div class="tool-bar">
+            <button class="btn" onclick="connectBT()"><span class="material-symbols-outlined">bluetooth</span> BT</button>
+            <button class="btn" onclick="startShare()"><span class="material-symbols-outlined">screen_share</span> SHARE</button>
+            <button class="btn reset-btn" onclick="resetBg()"><span class="material-symbols-outlined">restart_alt</span> СБРОС</button>
+        </div>
+
+        <div id="videoContainer" style="display:none; margin-top:20px;">
+            <video id="screenPreview" autoplay playsinline style="width:100%; border-radius:12px; border:2px solid var(--accent); background:#000;"></video>
+            <button class="btn" onclick="stopShare()" style="margin-top:10px; border-color:#ef4444; color:#ef4444;">ЗАКРЫТЬ</button>
+        </div>
+    </div>
+</div>
+
+<nav id="mainNav">
+    <button class="nav-btn active" onclick="switchTab('code', this)">
+        <span class="material-symbols-outlined">code</span><div>Код</div>
+    </button>
+    <button class="nav-btn" onclick="switchTab('backgrounds', this)">
+        <span class="material-symbols-outlined">image</span><div>Фоны</div>
+    </button>
+    <button class="nav-btn" onclick="switchTab('broadcast', this)">
+        <span class="material-symbols-outlined">podcasts</span><div>Эфир</div>
+    </button>
+    <button class="nav-btn" onclick="toggleTheme()">
+        <span class="material-symbols-outlined">contrast</span><div>Тема</div>
+    </button>
+    <button class="nav-btn" onclick="toggleUI()">
+        <span class="material-symbols-outlined">visibility_off</span><div>Скрыть</div>
+    </button>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>
