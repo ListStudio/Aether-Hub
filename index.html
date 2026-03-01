@@ -21,7 +21,7 @@
     <h1>AETHER HUB</h1>
     <div class="user-profile" onclick="editProfile()">
         <span class="material-symbols-outlined">account_circle</span>
-        <span id="userNameDisplay">Пользователь</span>
+        <span id="userNameDisplay">Я</span>
     </div>
 </header>
 
@@ -39,6 +39,7 @@
         
         <div class="editor-wrapper">
             <textarea id="codeInput" placeholder="Вставьте ваш скрипт..."></textarea>
+            <input type="hidden" id="editingId" value="">
             <div class="editor-tools">
                 <button class="icon-btn" onclick="copyCode()" title="Копировать">
                     <span class="material-symbols-outlined">content_copy</span>
@@ -46,8 +47,8 @@
             </div>
         </div>
 
-        <button class="btn save-btn" onclick="saveScript()">
-            <span class="material-symbols-outlined">save</span> <span>СОХРАНИТЬ КАРТОЧКУ</span>
+        <button class="btn save-btn" id="saveBtn" onclick="saveScript()">
+            <span class="material-symbols-outlined">save</span> <span id="saveBtnText">СОХРАНИТЬ КАРТОЧКУ</span>
         </button>
 
         <div class="code-grid" id="codeVault"></div>
@@ -79,7 +80,7 @@
             </div>
             <div class="stat-card">
                 <span class="material-symbols-outlined">vpn_lock</span>
-                <div class="stat-info"><small>VPN / СЕТЬ</small><span id="stat-vpn">ONLINE</span></div>
+                <div class="stat-info"><small>БЕЗОПАСНОСТЬ</small><span id="stat-vpn">SSL</span></div>
             </div>
             <div class="stat-card">
                 <span id="batt-icon" class="material-symbols-outlined">battery_full</span>
@@ -94,8 +95,8 @@
         </div>
 
         <div id="videoContainer" style="display:none; margin-top:20px;">
-            <video id="screenPreview" autoplay playsinline style="width:100%; border-radius:12px; border:2px solid var(--accent); background:#000;"></video>
-            <button class="btn" onclick="stopShare()" style="margin-top:10px; border-color:#ef4444; color:#ef4444;">ЗАКРЫТЬ</button>
+            <video id="screenPreview" autoplay playsinline muted style="width:100%; border-radius:12px; border:2px solid var(--accent); background:#000;"></video>
+            <button class="btn" onclick="stopShare()" style="margin-top:10px; border-color:#ef4444; color:#ef4444;">ЗАКРЫТЬ ТРАНСЛЯЦИЮ</button>
         </div>
     </div>
 </div>
